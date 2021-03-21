@@ -20,26 +20,30 @@ import model.dao.CategoriaDao;
 public class CategoriaTest {
 
     public static void main(String[] args) {
-        //Salva objetos no BD
-        //Categoria categoria = new Categoria();
-        //categoria.setId(5);
-        // categoria.setDescricao("Comidas 3");
-        //CategoriaDao dao = new CategoriaDao();
-        //dao.save(categoria);
-
-        //Retorna registros pelo id
-        //CategoriaDao dao = new CategoriaDao();
-        //Categoria categoria = dao.find(2);
-        //System.out.println("ID: " + categoria.getId() + "\nDescrição: " + categoria.getDescricao());
-
-        //Retorna todos os registros
+/*
+        Salva objetos no BD
+        Categoria categoria = new Categoria();
+        categoria.setId(5);
+        categoria.setDescricao("Comidas 3");
         CategoriaDao dao = new CategoriaDao();
-        //List<Categoria> categorias = dao.findAll();
-        
+        dao.save(categoria);
+
+        Retorna registros pelo id
+        CategoriaDao dao = new CategoriaDao();
+        Categoria categoria = dao.find(2);
+        System.out.println("ID: " + categoria.getId() + "\nDescrição: " + categoria.getDescricao());
+        Retorna todos os registros
+        CategoriaDao dao = new CategoriaDao();
+        List<Categoria> categorias = dao.findAll();
+       
         for (Categoria categoria : dao.findAll()) {
             System.out.println("-------------------------");
             System.out.println("ID: " + categoria.getId() + "\nDescrição: " + categoria.getDescricao());
         }
+*/
+        CategoriaDao dao = new CategoriaDao();
+        dao.remove(1);
+        
         
     }
 }

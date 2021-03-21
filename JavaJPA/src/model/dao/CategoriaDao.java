@@ -62,11 +62,31 @@ public class CategoriaDao {
             categorias = em.createQuery("from Categoria c").getResultList();
 
         } catch (Exception e) {
-            
+
             System.err.println("");
         } finally {
             em.close();
         }
         return categorias;
+    }
+
+    public Categoria remove(Integer id) {
+
+        EntityManager em = new ConnectionFactory().getConnection();
+        Categoria categoria = null;
+        try {
+            categoria = em.find(Categoria.class, id);
+
+            em.getTransaction().begin();
+            em.remove(categoria);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.err.println(e);
+        } finally {
+            em.close();
+        }
+
+        return categoria;
+
     }
 }
