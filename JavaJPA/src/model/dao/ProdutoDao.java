@@ -6,6 +6,7 @@
 package model.dao;
 
 import connection.ConnectionFactory;
+import java.util.List;
 import javax.persistence.EntityManager;
 import model.bean.Produto;
 
@@ -37,5 +38,59 @@ public class ProdutoDao {
 
         return produto;
     }
+    
+    public Produto findById(Integer id){
+        
+        EntityManager em = new ConnectionFactory().getConnection();
+        Produto produto = null;
+        try {
+            em.getTransaction().begin();
+            produto = em.find(Produto.class, id);
+            em.getTransaction().commit();
+            
+        } catch (Exception e) {
+            System.err.println(e);
+            em.getTransaction().rollback();
+        } finally {
+            
+        }
+        
+        return produto;
+    }
 
+    public List<Produto> findAll(){
+        EntityManager em = new ConnectionFactory().getConnection();
+        List<Produto> produtos = null;
+        
+        try {
+            produtos = em.createQuery("from Produto").getResultList();
+            
+        } catch (Exception e) {
+            System.err.println(e);
+            
+        } finally {
+           em.close();
+        }
+        
+        return produtos;
+    }
+    
+    public Produto remove(Integer id){
+        
+        EntityManager em = new ConnectionFactory().getConnection();
+        Produto produto = null;
+        try {
+            produto = em.find(Produto.class, id);
+            
+            em.getTransaction().begin();
+            em.remove(produto);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.err.println(e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        return produto;
+    }
 }

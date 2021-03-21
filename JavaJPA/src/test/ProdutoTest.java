@@ -5,6 +5,7 @@
  */
 package test;
 
+import java.util.List;
 import model.bean.Categoria;
 import model.bean.Produto;
 import model.dao.ProdutoDao;
@@ -16,8 +17,8 @@ import model.dao.ProdutoDao;
 public class ProdutoTest {
 
     public static void main(String[] args) {
- 
 
+        /*
         ProdutoDao dao = new ProdutoDao();
 
         Produto produto = new Produto();
@@ -34,8 +35,31 @@ public class ProdutoTest {
         produto.setCategoria(categoria);
         
         dao.save(produto);
+      
+        ProdutoDao dao = new ProdutoDao();
 
-    
+        Produto produto = new Produto();
+
+        produto.setId(2);
+
+        produto = dao.findById(2);
+        System.out.println(produto.toString());
+        
+        ProdutoDao dao = new ProdutoDao();
+
+        List<Produto> produtos = dao.findAll();
+        
+        for (Produto produto : produtos) {
+            System.out.println(produto.toString());
+        }
+        
+        */
+        
+        ProdutoDao dao = new ProdutoDao();
+
+        Produto produto = dao.remove(2);
+        
+        System.out.println(produto.toString());
 
     }
 
