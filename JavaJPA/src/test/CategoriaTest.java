@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.bean.Categoria;
+import model.dao.CategoriaDao;
 
 /**
  *
@@ -19,14 +20,15 @@ public class CategoriaTest {
 
     public static void main(String[] args) {
         Categoria categoria = new Categoria();
-        categoria.setDescricao("Comidas");
+        categoria.setDescricao("Bedibas 2");
 
-        EntityManager em = new ConnectionFactory().getConnection();
-
-        em.getTransaction().begin();
-        em.persist(categoria);
-        em.getTransaction().commit();
-
-        em.close();
+        
+        CategoriaDao dao = new CategoriaDao();
+        
+        dao.save(categoria);
+        
+        categoria.getId();
+        categoria.getDescricao();
+        
     }
 }
