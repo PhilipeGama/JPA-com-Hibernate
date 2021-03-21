@@ -19,15 +19,15 @@ import model.dao.CategoriaDao;
 public class CategoriaTest {
 
     public static void main(String[] args) {
-        Categoria categoria = new Categoria();
-        
-        categoria.setId(5);
-        categoria.setDescricao("Comidas 3");
-
+//        Categoria categoria = new Categoria();
+//        categoria.setId(5);
+//        categoria.setDescricao("Comidas 3");
+//
         CategoriaDao dao = new CategoriaDao();
-
-        dao.save(categoria);
-
+//
+//        dao.save(categoria);
+//
+        Categoria categoria = dao.find(2);
         System.out.println("ID: " + categoria.getId() + "\nDescrição: " + categoria.getDescricao());
 
     }
