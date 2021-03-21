@@ -6,6 +6,7 @@
 package model.dao;
 
 import connection.ConnectionFactory;
+import java.util.List;
 import javax.persistence.EntityManager;
 import model.bean.Categoria;
 
@@ -50,5 +51,22 @@ public class CategoriaDao {
         }
 
         return categoria;
+    }
+
+    public List<Categoria> findAll() {
+
+        EntityManager em = new ConnectionFactory().getConnection();
+        List<Categoria> categorias = null;
+
+        try {
+            categorias = em.createQuery("from Categoria c").getResultList();
+
+        } catch (Exception e) {
+            
+            System.err.println("");
+        } finally {
+            em.close();
+        }
+        return categorias;
     }
 }
