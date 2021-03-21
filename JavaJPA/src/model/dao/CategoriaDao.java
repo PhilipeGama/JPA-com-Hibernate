@@ -19,7 +19,12 @@ public class CategoriaDao {
         EntityManager em = new ConnectionFactory().getConnection();
         try {
             em.getTransaction().begin();
-            em.persist(categoria);
+            if(categoria.getId() == null){
+                em.persist(categoria);
+            }else{
+                em.merge(categoria);
+            }
+           
             em.getTransaction().commit();
         } catch (Exception e) {
             em.getTransaction().rollback();

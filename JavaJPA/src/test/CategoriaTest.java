@@ -20,15 +20,15 @@ public class CategoriaTest {
 
     public static void main(String[] args) {
         Categoria categoria = new Categoria();
-        categoria.setDescricao("Bedibas 2");
+        
+        categoria.setId(5);
+        categoria.setDescricao("Comidas 3");
 
-        
         CategoriaDao dao = new CategoriaDao();
-        
+
         dao.save(categoria);
-        
-        categoria.getId();
-        categoria.getDescricao();
-        
+
+        System.out.println("ID: " + categoria.getId() + "\nDescrição: " + categoria.getDescricao());
+
     }
 }
